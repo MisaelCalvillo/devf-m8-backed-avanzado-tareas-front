@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTasks } from './api';
+import { fetchTasks, createTask } from './api';
 import './App.css';
 
 
 function App() {
-  const [value, setValue] = useState("")
+  const [taskText, setTaskText] = useState("")
   const [tasks, setTasks] = useState([])
   const [loader, setLoader] = useState(false)
 
-  console.count('App se renderiza')
+  // console.count('App se renderiza')
+  console.log(tasks)
 
   useEffect(() => {
     setLoader(true);
@@ -30,11 +31,15 @@ function App() {
   }, [])
 
   const addTask = () => {
-    console.log('Agrega la tarea ', value);
-    setTasks(tasks.concat({
-      _id: "6233f2a9e7e80ebdb3e475ac" + Math.floor(Math.random() * 10),
-      text: value
-    }))
+    createTask(taskText)
+    .then((res) => {
+      const createdTask = res.data;
+      setTasks(tasks.concat(createdTask))
+      setTaskText('')
+    })
+    .catch((error) => {
+      console.error(error)
+    })
   }
 
   return (
@@ -45,11 +50,9 @@ function App() {
             <input 
               type="text" 
               className="task-input__text"
-              value={value}
+              value={taskText}
               placeholder="Ingresa la tarea"
-              onChange={(e) => {
-                setValue(e.target.value);
-              }}    
+              onChange={(e) => setTaskText(e.target.value)}    
             />
           </div>
           <button 
@@ -66,7 +69,7 @@ function App() {
               <p>{task.text}</p>
             </div>
           )
-        })}
+        }).reverse()}
       </header>
     </div>
   );
