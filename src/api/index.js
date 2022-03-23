@@ -18,3 +18,13 @@ export const createTask = (text) => {
     }
   })
 }
+
+export const deleteTask = (id) => {
+  return axios.delete(`http://localhost:5001/api/tareas/${id}`, 
+  {
+    headers: {
+      'Authorization': `Bearer ${process.env.REACT_APP_MONGO_DB_TOKEN}`,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  })
+}

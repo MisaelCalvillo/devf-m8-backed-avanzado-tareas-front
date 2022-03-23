@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTasks, createTask } from './api';
+import { fetchTasks, createTask, deleteTask } from './api';
 import './App.css';
 
 
@@ -9,7 +9,6 @@ function App() {
   const [loader, setLoader] = useState(false)
 
   // console.count('App se renderiza')
-  console.log(tasks)
 
   useEffect(() => {
     setLoader(true);
@@ -42,6 +41,17 @@ function App() {
     })
   }
 
+  const onDeleteTask = (id) => {
+    deleteTask(id)
+    .then((res) => {
+      const deltedTask = res.data
+      setTasks(tasks.filter((t) => t._id !== id))
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  } 
+
   return (
     <div className="app">
       <header className="app-header">
@@ -67,7 +77,7 @@ function App() {
           return (
             <div key={task._id} className="task">
               <p>{task.text}</p>
-              <span className="task__delete">X</span>
+              <span onClick={() => onDeleteTask(task._id)} className="task__delete">X</span>
             </div>
           )
         }).reverse()}
