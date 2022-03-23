@@ -58,4 +58,20 @@
   font-size: 1rem;
   border-radius: 5px;
   margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  text-align: left;
+}
+
+.task__delete { 
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  border-radius: 50%;
+}
+.task__delete:hover { 
+  background-color: red;
 }

@@ -67,6 +67,7 @@ function App() {
           return (
             <div key={task._id} className="task">
               <p>{task.text}</p>
+              <span className="task__delete">X</span>
             </div>
           )
         }).reverse()}
