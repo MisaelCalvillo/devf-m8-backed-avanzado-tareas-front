@@ -6,15 +6,27 @@ import './App.css';
 function App() {
   const [value, setValue] = useState("")
   const [tasks, setTasks] = useState([])
+  const [loader, setLoader] = useState(false)
+
+  console.count('App se renderiza')
 
   useEffect(() => {
-    fetchTasks()
-    .then((res) => {
-      setTasks(res.data)
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+    setLoader(true);
+    const timeoutId = setTimeout(() => {
+      console.log('Este proceso pasas despues de 5 segundos')
+      fetchTasks()
+        .then((res) => {
+          setTasks(res.data)
+          setLoader(false);
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+    }, 5000)
+
+    return () => {
+      clearTimeout(timeoutId)
+    }
   }, [])
 
   const addTask = () => {
@@ -47,7 +59,7 @@ function App() {
             Ingresar Tarea
           </button>
         </div>
-        
+        {loader && (<p style={{ color: 'white' }}>Loading...</p>)}
         {tasks.map((task) => {
           return (
             <div key={task._id} className="task">
