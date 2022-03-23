@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTasks, createTask } from './api';
 import './App.css';
+import { Trash2 } from 'react-feather';
 
 
 function App() {
@@ -65,9 +66,13 @@ function App() {
         {loader && (<p style={{ color: 'white' }}>Loading...</p>)}
         {tasks.map((task) => {
           return (
-            <div key={task._id} className="task">
-              <p>{task.text}</p>
-              <span className="task__delete">X</span>
+            <div className="task" key={task._id}>
+              <div className="task__text">
+                <p>{task.text}</p>
+              </div>
+              <div className="task__delete">
+                <Trash2 />
+              </div>
             </div>
           )
         }).reverse()}
