@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { fetchTasks, createTask, deleteTask } from '../api';
+import { fetchTasks, createTask, deleteTask } from '../../api';
 import './TaskList.css';
-import Button from '../components/Button';
-import Task from '../components/Task';
-import TextInput from '../components/TextInput/TextInput';
+import Button from '../../components/Button';
+import Task from '../../components/Task';
+import TextInput from '../../components/TextInput/TextInput';
 
 function TaskList(props) {
   const [taskText, setTaskText] = useState("")
