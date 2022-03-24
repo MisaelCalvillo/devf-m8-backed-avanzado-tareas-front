@@ -3,6 +3,8 @@ import { fetchTasks, createTask, deleteTask } from './api';
 import './App.css';
 import { Trash2 } from 'react-feather';
 
+import Button from './components/Button';
+
 
 function App() {
   const [taskText, setTaskText] = useState("")
@@ -66,12 +68,10 @@ function App() {
               onChange={(e) => setTaskText(e.target.value)}    
             />
           </div>
-          <button 
-            onClick={addTask} 
-            className="task-input__btn"
-          >
-            Ingresar Tarea
-          </button>
+          <Button 
+            className="task-input__btn" 
+            onClick={addTask}
+          >Borrar tarea</Button>
         </div>
         {loader && (<p style={{ color: 'white' }}>Loading...</p>)}
         {tasks.map((task) => {

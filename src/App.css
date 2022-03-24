@@ -29,7 +29,7 @@
 }
 
 .task-input__btn {
-  background-color: #0984e3;
+  background-color: #0984e3 !important;
   width: 100%;
   max-width: 500px;
   padding: 1rem;
@@ -42,10 +42,10 @@
 }
 
 .task-input__btn:hover {
-  background-color: #74b9ff;
+  background-color: #74b9ff !important;
 }
 .task-input__btn:active {
-  background-color: #00b894;
+  background-color: #00b894 !important;
 }
 
 .task-input__text {
