@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { fetchTasks, createTask, deleteTask } from './api';
 import './App.css';
-import { Trash2 } from 'react-feather';
 
 import Button from './components/Button';
+import Task from './components/Task';
 
 
 function App() {
@@ -60,6 +60,7 @@ function App() {
       <header className="app-header">
         <div className="task-input__container">
           <div className="task-input">
+          {/* // TODO: Hacer el componente TextInput */}
             <input 
               type="text" 
               className="task-input__text"
@@ -74,18 +75,7 @@ function App() {
           >Borrar tarea</Button>
         </div>
         {loader && (<p style={{ color: 'white' }}>Loading...</p>)}
-        {tasks.map((task) => {
-          return (
-            <div className="task" key={task._id}>
-              <div className="task__text">
-                <p>{task.text}</p>
-              </div>
-              <div onClick={() => onDeleteTask(task._id)} className="task__delete">
-                <Trash2 />
-              </div>
-            </div> 
-          )
-        }).reverse()}
+        {tasks.map((task) => <Task key={task._id} text={task.text} />).reverse()}
       </header>
     </div>
   );
