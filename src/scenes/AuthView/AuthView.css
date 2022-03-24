@@ -1,0 +1,9 @@
+.auth-view {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.auth-view__input-container {
+  margin-bottom: 2rem;
+}
