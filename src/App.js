@@ -4,6 +4,7 @@ import './App.css';
 
 import Button from './components/Button';
 import Task from './components/Task';
+import TextInput from './components/TextInput/TextInput';
 
 
 function App() {
@@ -59,23 +60,28 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="task-input__container">
-          <div className="task-input">
           {/* // TODO: Hacer el componente TextInput */}
-            <input 
-              type="text" 
-              className="task-input__text"
-              value={taskText}
-              placeholder="Ingresa la tarea"
-              onChange={(e) => setTaskText(e.target.value)}    
+            <TextInput 
+              value={taskText} 
+              placeholder="Ingresa una tarea"
+              type="text"
+              onChange={(e) => setTaskText(e.target.value)}   
             />
-          </div>
+            <TextInput
+              value={taskText} 
+              placeholder="Ingresa tu contraseña"
+              type="password"
+              onChange={(e) => setTaskText(e.target.value)} 
+            />
           <Button 
             className="task-input__btn" 
             onClick={addTask}
           >Borrar tarea</Button>
         </div>
         {loader && (<p style={{ color: 'white' }}>Loading...</p>)}
-        {tasks.map((task) => <Task key={task._id} text={task.text} />).reverse()}
+        {tasks.map((task) => (
+          <Task key={task._id} text={task.text} onDelete={() => onDeleteTask(task._id)} />
+        )).reverse()}
       </header>
     </div>
   );

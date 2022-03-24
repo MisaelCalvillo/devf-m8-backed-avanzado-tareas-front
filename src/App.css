@@ -12,16 +12,6 @@
   padding: 3rem 1rem 4rem 1rem;
 }
 
-
-.task-input {
-  width: 100%;
-  max-width: 500px;
-  background: white;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-}
-
 .task-input__container {
   margin-bottom: 3rem;
   width: 100%;
@@ -46,12 +36,4 @@
 }
 .task-input__btn:active {
   background-color: #00b894 !important;
-}
-
-.task-input__text {
-  border: none;
-  width: 100%;
-  max-width: 500px;
-  font-size: 1rem;
-  outline: none;
 }
