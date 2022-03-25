@@ -5,7 +5,7 @@ import Button from '../../components/Button';
 import Task from '../../components/Task';
 import TextInput from '../../components/TextInput/TextInput';
 
-function TaskList({ user }) {
+function TaskList({ user }) { // TODO: Recibir el token como props
   const [taskText, setTaskText] = useState("")
   const [tasks, setTasks] = useState([])
   const [loader, setLoader] = useState(false)
@@ -16,7 +16,7 @@ function TaskList({ user }) {
     setLoader(true);
     const timeoutId = setTimeout(() => {
       console.log('Este proceso pasas despues de 5 segundos')
-      fetchTasks()
+      fetchTasks() // TODO: MANDAR TOKEN
         .then((res) => {
           setTasks(res.data)
           setLoader(false);
@@ -32,7 +32,7 @@ function TaskList({ user }) {
   }, [])
 
   const addTask = () => {
-    createTask(taskText)
+    createTask(taskText) // TODO: Mandar token
     .then((res) => {
       const createdTask = res.data;
       setTasks(tasks.concat(createdTask))

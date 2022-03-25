@@ -10,6 +10,14 @@ function AuthView({ authUser }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const makeLogin = () => {
+
+    // TODO: Hacer login en API 
+    
+    // if success
+    setToken(token) // todo: Hacer que esto jale
+  }
+
   return (
     <div className='auth-view'>
       <div className='auth-view__input-container'>
@@ -26,7 +34,7 @@ function AuthView({ authUser }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <Button onClick={() => authUser(email)}>Iniciar Sesión</Button>
+      <Button onClick={() => console.log('iniciar sesión')}>Iniciar Sesión</Button>
     </div>
   )
 }

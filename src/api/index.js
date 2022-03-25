@@ -9,7 +9,7 @@ export const fetchTasks = (token) => {
   })
 }
 
-export const createTask = (text) => {
+export const createTask = (text, token) => {
   return axios.post('http://localhost:5001/api/tareas', { text }, 
   {
     headers: {
@@ -19,7 +19,7 @@ export const createTask = (text) => {
   })
 }
 
-export const deleteTask = (id) => {
+export const deleteTask = (id, token) => {
   return axios.delete(`http://localhost:5001/api/tareas/${id}`, 
   {
     headers: {

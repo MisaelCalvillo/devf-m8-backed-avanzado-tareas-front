@@ -4,7 +4,8 @@ import AuthView from './scenes/AuthView/AuthView';
 import './App.css';
 
 function App() {
-  const [ isUser, setIsUser ] = useState(null);
+  const [ isUser, setIsUser ] = useState(null); // Estado global
+  const [token, isToken] = useState(null);
 
   return (
     <div className="app">
