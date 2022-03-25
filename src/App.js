@@ -4,13 +4,14 @@ import AuthView from './scenes/AuthView/AuthView';
 import './App.css';
 
 function App() {
-  const [ isUser, setIsUser ] = useState(null); // Estado global
-  const [token, isToken] = useState(null);
+  const [token, setToken] = useState(null);
+
+  console.log({ token });
 
   return (
     <div className="app">
       <header className="app-header">
-        {isUser ? <TaskList user={isUser} /> : <AuthView authUser={setIsUser}/>}
+        {token ? <TaskList token={token} /> : <AuthView  setToken={setToken} />}
       </header>
     </div>
   );

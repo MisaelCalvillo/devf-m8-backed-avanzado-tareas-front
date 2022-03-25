@@ -2,20 +2,26 @@ import React, { useState } from 'react';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
+import { login } from '../../api';
 
 import './AuthView.css';
 
-function AuthView({ authUser }) {
+function AuthView({ setToken }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const makeLogin = () => {
-
-    // TODO: Hacer login en API 
-    
-    // if success
-    setToken(token) // todo: Hacer que esto jale
+    console.log('Make login')
+    login(email, password)
+    .then((res) => {
+      const user = res.data;
+      setToken(user.token);
+    }) 
+    .catch((err) => {
+      console.error(err);
+    })
+  
   }
 
   return (
@@ -34,7 +40,7 @@ function AuthView({ authUser }) {
           onChange={(e) => setPassword(e.target.value)}
         />
       </div>
-      <Button onClick={() => console.log('iniciar sesión')}>Iniciar Sesión</Button>
+      <Button onClick={makeLogin}>Iniciar Sesión</Button>
     </div>
   )
 }

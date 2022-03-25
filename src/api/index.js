@@ -1,5 +1,16 @@
 import axios from 'axios';
 
+export const login = (email, password) => {
+  return axios.post('http://localhost:5001/api/users/login', {
+    email,
+    password
+  }, {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+}
+
 export const fetchTasks = (token) => {
   return axios.get('http://localhost:5001/api/tareas', {
     headers: {
