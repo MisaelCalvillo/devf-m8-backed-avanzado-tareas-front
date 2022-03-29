@@ -20,21 +20,14 @@ function TaskList({ token }) { // TODO: Recibir el token como props
 
   useEffect(() => {
     setLoader(true);
-    const timeoutId = setTimeout(() => {
-      console.log('Este proceso pasas despues de 5 segundos')
-      fetchTasks(token)
-        .then((res) => {
-          setTasks(res.data)
-          setLoader(false);
-        })
-        .catch((err) => {
-          console.error(err)
-        })
-    }, 5000)
-
-    return () => {
-      clearTimeout(timeoutId)
-    }
+    fetchTasks(token)
+      .then((res) => {
+        setTasks(res.data)
+        setLoader(false);
+      })
+      .catch((err) => {
+        console.error(err)
+      })
   }, [])
 
   const addTask = () => {
