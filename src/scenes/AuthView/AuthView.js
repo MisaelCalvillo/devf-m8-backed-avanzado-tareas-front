@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../../components/Button';
 import TextInput from '../../components/TextInput';
@@ -10,6 +11,7 @@ function AuthView({ setToken }) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const makeLogin = () => {
     console.log('Make login')
@@ -17,6 +19,7 @@ function AuthView({ setToken }) {
     .then((res) => {
       const user = res.data;
       setToken(user.token);
+      navigate('/');
     }) 
     .catch((err) => {
       console.error(err);

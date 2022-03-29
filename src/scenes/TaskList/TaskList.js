@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fetchTasks, createTask, deleteTask } from '../../api';
 import './TaskList.css';
 import Button from '../../components/Button';
@@ -9,8 +10,13 @@ function TaskList({ token }) { // TODO: Recibir el token como props
   const [taskText, setTaskText] = useState("")
   const [tasks, setTasks] = useState([])
   const [loader, setLoader] = useState(false)
+  const navigate = useNavigate();
 
-  // console.count('App se renderiza')
+  useEffect(() => {
+    if (!token) {
+      navigate("/auth");
+    }
+  }, [token]);
 
   useEffect(() => {
     setLoader(true);
