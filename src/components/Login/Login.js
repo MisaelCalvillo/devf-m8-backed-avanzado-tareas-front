@@ -25,7 +25,7 @@ function Login({ setToken }) {
   
   return (
     <div>
-      <h2 style={{ color: 'white' }}>Iniciar sesión 🦄</h2>
+      <h2 style={{ color: 'white' }}>Iniciar sesión por favor... 🦄</h2>
       <div className='auth-view__input-container'>
         <TextInput 
           value={email} 
